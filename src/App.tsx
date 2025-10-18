@@ -1,10 +1,15 @@
 // import { useState } from 'react'
+import { Form } from './Form'
+import { Results } from './Results'
 
-function App() {
+import type { FC } from 'react'
+
+const App: FC = () => {
   return (
-    <>
-      Blank
-    </>
+    <main>
+      <Form />
+      <Results />
+    </main>
   )
 }
 
