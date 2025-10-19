@@ -6,10 +6,10 @@
 
 .form__letter {
   aspect-ratio: 1 / 1;
-  border: 2px solid #111;
-  box-shadow: 3px 3px 0 #111;
+  border: 2px solid var(--ink-900);
+  box-shadow: 3px 3px 0 var(--ink-900);
   display: block;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s;
   width: 80px;
 
   &:focus-visible {
@@ -17,21 +17,22 @@
     outline-offset: 2px;
   }
 
-  &:has(:disabled) {
-    /* border-color: #999; */
-  }
+  /* &:has(:disabled) {
+    border-color: #999;
+  } */
 
   &:not(:has(:disabled)) {
     cursor: pointer;
   }
 
   &:has(:checked) {
-    background-color: #999;
+    background-color: var(--tile-5);
   }
 }
 
 .form__controls {
   display: flex;
   flex-direction: column;
+  gap: 5px;
   justify-content: center;
 }

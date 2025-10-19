@@ -1,7 +1,9 @@
 // import { useState } from 'react'
+import { Header } from './Header'
 import { Form } from './Form'
 import { Results } from './Results'
 import './assets/root.css'
+import './assets/theme.css'
 import './assets/app.css'
 
 import type { FC } from 'react'
@@ -9,9 +11,7 @@ import type { FC } from 'react'
 const App: FC = () => {
   return (
     <>
-      <header>
-        <h1>Baron's Bafflers Busters</h1>
-      </header>
+      <Header />
       <main>
         <Form />
         <Results />

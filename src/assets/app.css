@@ -1,12 +1,32 @@
 body {
+  background-color: var(--paper-100);
+  color: var(--ink-900);
   text-align: center;
 }
 
 main {
   display: flex;
   flex-direction: column;
+  font-family: var(--font-main);
   gap: 16px;
   margin: auto;
   max-width: 600px;
   text-align: start;
+}
+
+.btn {
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid var(--ink-900);
+  box-shadow: 3px 3px 0 var(--ink-900);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-main);
+  font-style: normal;
+  font-weight: 400;
+  height: 1.5rem;
+  justify-content: center;
+  line-height: 1;
+  min-width: 5rem;
+  padding: 0.25rem 0 0 0;
 }

@@ -1,0 +1,18 @@
+:root {
+  --ink-900:#1b1b1b;        /* main text / borders (nearly black) */
+  --ink-700:#2a2621;        /* subheads, rules */
+  --ink-500:#49423a;        /* muted labels */
+
+  --paper-100:#efe2c2;
+  --paper-200:#e3d4b0;
+  --paper-300:#d5c4a1;
+
+  --tile-1:#eadab9;
+  --tile-2:#d0c09f;
+  --tile-3:#b8a782;
+  --tile-4:#a0906c;
+  --tile-5:#8a7b5a;
+
+  --font-main: "Special Elite", system-ui;
+  --font-title: "Fredericka the Great", serif;
+}

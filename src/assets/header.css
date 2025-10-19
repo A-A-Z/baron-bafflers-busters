@@ -1,0 +1,30 @@
+.header {
+  border-bottom: 2px solid var(--ink-500);
+  margin: 0 auto 2rem auto;
+  max-width: fit-content;
+  padding-block: 2rem;
+}
+
+.header__title {
+  color: var(--ink-500);
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 2.5rem;
+  font-style: normal;
+  line-height: 1;
+  text-transform: uppercase;
+  word-spacing: 1rem;
+}
+
+.header__wonky {
+  display: inline-block;
+  transform: rotate(47deg) translateX(-0.4rem);
+  transform-origin: bottom left;
+}
+
+.header__subtitle {
+  display: block;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  text-transform: uppercase;
+}

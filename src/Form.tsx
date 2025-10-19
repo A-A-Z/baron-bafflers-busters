@@ -48,6 +48,10 @@ export const Form: FC = () => {
     setValues(values.slice(0, values.length - 1))
   }
 
+  const resetLetters = () => {
+    setValues(DEFAULT_VALUE)
+  }
+
   const onSubmit: FormEventHandler<HTMLFormElement> = () => {
     console.log({ values })
   }
@@ -84,21 +88,28 @@ export const Form: FC = () => {
             <li className="form__controls">
               <button
                 type="button"
+                className="btn"
                 onClick={addLetter}
                 disabled={values.length > 8}
               >
-                add
+                Add
               </button>
               <button
                 type="button"
+                className="btn"
                 onClick={removeLetter}
                 disabled={values.length < 4}
-              >remove</button>
+              >Remove</button>
+              <button
+                type="button"
+                className="btn"
+                onClick={resetLetters}
+              >Reset</button>
             </li>
           </ul>
         </fieldset>
 
-        <button type="submit">
+        <button type="submit" className="btn">
           Run
         </button>
       </form>
