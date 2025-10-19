@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { DEFAULT_VALUE } from './constants'
+import './assets/form.css'
 
 import type {
   FC,
@@ -57,46 +58,45 @@ export const Form: FC = () => {
 
       <form onSubmit={onSubmit}>
         <fieldset>
-          <legend>Letters</legend>
-          <ul aria-label="letters">
-            {values.map((isShort, index) => {
-              const inputId = `letter-${index}`
-              return (
+          <legend className="visually-hidden">Letters</legend>
+          <ul className="form__letters" aria-label="letters">
+            {values.map((isShort, index) => (
                 <li key={index}>
                   <label
-                    htmlFor={inputId}
+                    className="form__letter"
                     onKeyDown={event => onLabelKeydown(event, index)}
                     tabIndex={0}
                   >
-                    Letter {index + 1}
+                    <span className="visually-hidden">Letter {index + 1}</span>
+                    <input
+                      className="visually-hidden"
+                      type="checkbox"
+                      value={index}
+                      checked={isShort}
+                      onChange={onCheck}
+                      disabled={!isValidSection(index)}
+                      tabIndex={-1}
+                    />
                   </label>
-                  <input
-                    id={inputId}
-                    type="checkbox"
-                    value={index}
-                    checked={isShort}
-                    onChange={onCheck}
-                    disabled={!isValidSection(index)}
-                    tabIndex={-1}
-                  />
                 </li>
               )
-            })}
+            )}
+            <li className="form__controls">
+              <button
+                type="button"
+                onClick={addLetter}
+                disabled={values.length > 8}
+              >
+                add
+              </button>
+              <button
+                type="button"
+                onClick={removeLetter}
+                disabled={values.length < 4}
+              >remove</button>
+            </li>
           </ul>
         </fieldset>
-
-        <button
-          type="button"
-          onClick={addLetter}
-          disabled={values.length > 8}
-        >
-          add
-        </button>
-        <button
-          type="button"
-          onClick={removeLetter}
-          disabled={values.length < 4}
-        >remove</button>
 
         <button type="submit">
           Run
