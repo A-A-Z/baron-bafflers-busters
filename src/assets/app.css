@@ -1,6 +1,7 @@
 body {
   background-color: var(--paper-100);
   color: var(--ink-900);
+  height: 100vh;
   text-align: center;
 }
 
@@ -10,7 +11,7 @@ main {
   font-family: var(--font-main);
   gap: 16px;
   margin: auto;
-  max-width: 600px;
+  width: fit-content;
   text-align: start;
 }
 

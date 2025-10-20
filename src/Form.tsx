@@ -8,8 +8,9 @@ import type {
   FormEventHandler,
   KeyboardEvent
 } from 'react'
+import type { FormProps } from './types'
 
-export const Form: FC = () => {
+export const Form: FC<FormProps> = ({ run }) => {
   const [values, setValues] = useState<boolean[]>(DEFAULT_VALUE)
 
   const hasSelected = values.some(value => value)
@@ -52,8 +53,9 @@ export const Form: FC = () => {
     setValues(DEFAULT_VALUE)
   }
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = () => {
-    console.log({ values })
+  const onSubmit: FormEventHandler<HTMLFormElement> = event => {
+    event.preventDefault()
+    run(values)
   }
 
   return (

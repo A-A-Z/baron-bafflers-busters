@@ -10,16 +10,12 @@
   box-shadow: 3px 3px 0 var(--ink-900);
   display: block;
   transition: background-color 0.2s;
-  width: 80px;
+  width: 85px;
 
   &:focus-visible {
     outline: 1px solid #222;
     outline-offset: 2px;
   }
-
-  /* &:has(:disabled) {
-    border-color: #999;
-  } */
 
   &:not(:has(:disabled)) {
     cursor: pointer;

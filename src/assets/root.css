@@ -60,17 +60,3 @@ table {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-
-/* Google fonts */
-
-.fredericka-the-great-regular {
-  font-family: "Fredericka the Great", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.special-elite-regular {
-  font-family: "Special Elite", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}

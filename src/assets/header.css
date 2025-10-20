@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 2px solid var(--ink-500);
+  border-bottom: 3px solid var(--ink-500);
   margin: 0 auto 2rem auto;
   max-width: fit-content;
   padding-block: 2rem;
