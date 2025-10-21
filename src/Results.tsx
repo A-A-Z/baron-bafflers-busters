@@ -1,4 +1,4 @@
-// import { useState, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import words from 'an-array-of-english-words'
 import './assets/results.css'
 
@@ -11,7 +11,12 @@ export const Results: FC<ResultsProps> = ({ values }) => {
   // add all long words to array
   // loop over long words, break out the short part and check in short Set
   // store all matchs in object with a index of the short word
+  const [selectedWord, setSelectedWord] = useState<string | null>(null)
   const longLength = values.length
+
+  useEffect(() => {
+    setSelectedWord(null)
+  }, [values])
 
   if (values.length === 0) {
     return 'none'
@@ -67,8 +72,10 @@ export const Results: FC<ResultsProps> = ({ values }) => {
             <h3 className="results__letter">{letter}</h3>
             <ul className="results__words">
               {Object.entries(item).map(([short, longList]) => (
-                <li className="results__word">
-                  {short} <span className="results__count">({longList.length})</span>
+                <li key={short} className="results__word">
+                  <button type="button" className="results__select-btn" onClick={() => { setSelectedWord(short) }}>
+                    {short} <span className="results__count">({longList.length})</span>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -76,6 +83,16 @@ export const Results: FC<ResultsProps> = ({ values }) => {
         ))
       }
       </ul>
+      {selectedWord !== null &&
+        <div className="selected">
+          <h2 className="selected__title">{selectedWord}</h2>
+          <ul className="selected__list">
+            {matches[selectedWord[0]][selectedWord].map((long) => (
+              <li key={long} className="selected__item">{long}</li>
+            ))}
+          </ul>
+        </div>
+      }
     </section>
   )
 }
