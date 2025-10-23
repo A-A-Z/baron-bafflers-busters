@@ -12,6 +12,8 @@ import type { FormProps } from './types'
 
 export const Form: FC<FormProps> = ({ run }) => {
   const [values, setValues] = useState<boolean[]>(DEFAULT_VALUE)
+  const [longHasLetters, setLongHasLetters] = useState('')
+  const [shortHasLetters, setShortHasLetters] = useState('')
 
   const hasSelected = values.some(value => value)
 
@@ -51,11 +53,21 @@ export const Form: FC<FormProps> = ({ run }) => {
 
   const resetLetters = () => {
     setValues(DEFAULT_VALUE)
+    setLongHasLetters('')
+    setShortHasLetters('')
+  }
+
+  const onLongLettersChange: ChangeEventHandler<HTMLInputElement> = event => {
+    setLongHasLetters(event.currentTarget.value)
+  }
+
+  const onShortLettersChange: ChangeEventHandler<HTMLInputElement> = event => {
+    setShortHasLetters(event.currentTarget.value)
   }
 
   const onSubmit: FormEventHandler<HTMLFormElement> = event => {
     event.preventDefault()
-    run(values)
+    run(values, longHasLetters, shortHasLetters)
   }
 
   return (
@@ -110,6 +122,16 @@ export const Form: FC<FormProps> = ({ run }) => {
             </li>
           </ul>
         </fieldset>
+          
+        <div>
+          <label htmlFor="long-has-letters">Long word must have the following letters:</label>
+          <input id="long-has-letters" type="text" name="longHasLetters" value={longHasLetters} onChange={onLongLettersChange} />
+        </div>
+
+        <div>
+          <label htmlFor="short-has-letters">Short word must be made of some of these letters:</label>
+          <input id="short-has-letters" type="text" name="shortHasLetters" value={shortHasLetters} onChange={onShortLettersChange} />
+        </div>
 
         <button type="submit" className="btn">
           Run
