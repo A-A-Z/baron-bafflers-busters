@@ -55,6 +55,7 @@ export const Form: FC<FormProps> = ({ run }) => {
     setValues(DEFAULT_VALUE)
     setLongHasLetters('')
     setShortHasLetters('')
+    run([], '', '')
   }
 
   const onLongLettersChange: ChangeEventHandler<HTMLInputElement> = event => {
@@ -72,9 +73,9 @@ export const Form: FC<FormProps> = ({ run }) => {
 
   return (
     <section aria-labelledby="form-title">
-      <h2 id="form-title">Form</h2>
+      <h2 id="form-title" className="visually-hidden">Form</h2>
 
-      <form onSubmit={onSubmit}>
+      <form className="form" onSubmit={onSubmit}>
         <fieldset>
           <legend className="visually-hidden">Letters</legend>
           <ul className="form__letters" aria-label="letters">
@@ -122,18 +123,40 @@ export const Form: FC<FormProps> = ({ run }) => {
             </li>
           </ul>
         </fieldset>
-          
-        <div>
-          <label htmlFor="long-has-letters">Long word must have the following letters:</label>
-          <input id="long-has-letters" type="text" name="longHasLetters" value={longHasLetters} onChange={onLongLettersChange} />
+
+        <div className="from__fields">
+          <div className="form__field">
+            <label htmlFor="long-has-letters" className="form__label">
+              Long word must have the following letters:
+            </label>
+            <input
+              id="long-has-letters"
+              className="form__input"
+              type="text"
+              name="longHasLetters"
+              value={longHasLetters}
+              onChange={onLongLettersChange}
+              placeholder="None"
+            />
+          </div>
+
+          <div className="form__field">
+            <label htmlFor="short-has-letters" className="form__label">
+              Short word must be made of some of these letters:
+            </label>
+            <input
+              id="short-has-letters"
+              className="form__input"
+              type="text"
+              name="shortHasLetters"
+              value={shortHasLetters}
+              onChange={onShortLettersChange}
+              placeholder="None"
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="short-has-letters">Short word must be made of some of these letters:</label>
-          <input id="short-has-letters" type="text" name="shortHasLetters" value={shortHasLetters} onChange={onShortLettersChange} />
-        </div>
-
-        <button type="submit" className="btn">
+        <button type="submit" className="btn form__run">
           Run
         </button>
       </form>

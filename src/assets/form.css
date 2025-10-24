@@ -1,3 +1,10 @@
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .form__letters {
   display: flex;
   gap: 5px;
@@ -12,9 +19,12 @@
   transition: background-color 0.2s;
   width: 85px;
 
+  &:hover:not(:has(:disabled,:checked)) {
+    background-color: var(--paper-200);
+  }
+
   &:focus-visible {
-    outline: 1px solid #222;
-    outline-offset: 2px;
+    outline: 1px solid var(--ink-900);
   }
 
   &:not(:has(:disabled)) {
@@ -31,4 +41,53 @@
   flex-direction: column;
   gap: 5px;
   justify-content: center;
+}
+
+.from__fields {
+  display: flex;
+  gap: 2rem;
+  max-width: min-content;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  margin-block-end: 1rem;
+}
+
+.form__label {
+  font-size: 0.9rem;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.form__input {
+  background-color: var(--paper-200);
+  border: 2px solid var(--ink-900);
+  box-shadow: 3px 3px 0 var(--ink-900);
+  font-size: 1.2rem;
+  height: 2rem;
+  letter-spacing: 0.2em;
+  padding: 0.2rem 0.8rem 0;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+
+  &::placeholder {
+    color: var(--ink-900);
+    opacity: 0.3;
+  }
+
+  &:hover {
+    background-color: var(--paper-300);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--ink-900);
+  }
+}
+
+.btn.form__run {
+  font-size: 1.1rem;
+  padding: 16px 0 11px 0;
+  width: 300px;
 }

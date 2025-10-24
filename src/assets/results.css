@@ -40,7 +40,7 @@
   container: results-list;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1.3rem 1.5rem;
   text-transform: capitalize;
   white-space: nowrap;
   width: 100cqw;
@@ -51,7 +51,16 @@
   border: 0;
   cursor: pointer;
   font: inherit;
+  padding-block-start: 0.3em;
   text-transform: inherit;
+
+  &[aria-selected="true"] {
+    background-color: var(--paper-300);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ink-900);
+  }
 }
 
 .results__word {
@@ -60,6 +69,10 @@
 
 .results__count {
   opacity: 0.5;
+}
+
+.results__notice {
+  margin: 3rem auto;
 }
 
 .selected {

@@ -8,11 +8,6 @@ import type { FC } from 'react'
 import type { ResultsProps } from './types'
 
 export const Results: FC<ResultsProps> = ({ values, longHasLetters, shortHasLetters }) => {
-  // loop over words and get all long.length words and short.length words
-  // add all short words to Set
-  // add all long words to array
-  // loop over long words, break out the short part and check in short Set
-  // store all matchs in object with a index of the short word
   const [selectedWord, setSelectedWord] = useState<string | null>(null)
   const longLength = values.length
 
@@ -20,14 +15,12 @@ export const Results: FC<ResultsProps> = ({ values, longHasLetters, shortHasLett
     setSelectedWord(null)
   }, [values])
 
-  if (values.length === 0) {
-    return 'none'
-  }
+  if (values.length === 0) return null
 
   const shortLength = values.filter(value => value).length
 
   if (shortLength < 2 || shortLength === longLength) {
-    return 'error'
+    return <p className="results__notice">You must select at least two short letters.</p>
   }
 
   const fistShortIndex = values.findIndex(value => value)
@@ -72,7 +65,7 @@ export const Results: FC<ResultsProps> = ({ values, longHasLetters, shortHasLett
   const entries = Object.entries(matches)
 
   if (entries.length === 0) {
-    return <p>No result</p>
+    return <p className="results__notice">No results.</p>
   }
   
   return (
@@ -89,7 +82,12 @@ export const Results: FC<ResultsProps> = ({ values, longHasLetters, shortHasLett
                 .toSorted()
                 .map(([short, longList]) => (
                   <li key={short} className="results__word">
-                    <button type="button" className="results__select-btn" onClick={() => { setSelectedWord(short) }}>
+                    <button
+                      type="button"
+                      className="results__select-btn"
+                      onClick={() => { setSelectedWord(short) }}
+                      aria-selected={short === selectedWord}
+                    >
                       {short} <span className="results__count">({longList.length})</span>
                     </button>
                   </li>
